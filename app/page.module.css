@@ -82,13 +82,13 @@
 }
 
 a.primary {
-  background: var(--foreground);
+  background: var(--primaryColor);
   color: var(--background);
   gap: 8px;
 }
 
 a.secondary {
-  border-color: var(--gray-alpha-200);
+  border-color: var(--secondaryColor);
   min-width: 180px;
 }
 
