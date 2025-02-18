@@ -1,7 +1,26 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import Slider from "./Slider";
+import Journey from "./journey";
 
 export default function Home() {
+  const topto = () => {
+    window.scrollTo(0, 0);
+  }
+  const sliderData = [{ title: "title 1", description: "title 1 description", btn: "Read more" },
+  { title: "title 2", description: "title 2 description", btn: "Read more" },
+  { title: "title 3", description: "title 3 description", btn: "Read more" },
+  { title: "title 4", description: "title 4 description", btn: "Read more" },
+  { title: "title 5", description: "title 5 description", btn: "Read more" },
+  { title: "title 6", description: "title 6 description", btn: "Read more" },
+  { title: "title 7", description: "title 7 description", btn: "Read more" },
+  { title: "title 8", description: "title 8 description", btn: "Read more" },
+  { title: "title 9", description: "title 9 description", btn: "Read more" },
+  { title: "title 10", description: "title 10 description", btn: "Read more" },
+  { title: "title 11", description: "title 11 description", btn: "Read more" },
+  { title: "title 12", description: "title 12 description", btn: "Read more" }]
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -89,7 +108,13 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+        <button onClick={topto}>Click</button>
       </footer>
+
+      <div>
+        <Slider data={sliderData} row={3} />
+        <Journey data={sliderData} />
+      </div>
     </div>
   );
 }

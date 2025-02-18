@@ -1,0 +1,74 @@
+.link {
+    display: grid;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.link li {
+    list-style-type: none;
+}
+
+.footer {
+    display: flex;
+    padding: 5rem 2rem;
+    gap: 5rem;
+    justify-content: space-evenly;
+}
+
+.img {
+    align-content: center;
+}
+
+.right_block {
+    display: flex;
+    gap: 5rem;
+}
+
+.gap_flex_block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.subscription_box {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.subscription_input {
+    width: 15rem;
+    height: 2rem;
+}
+
+.subscription_btn {
+    height: 2rem;
+    padding: 0 1rem;
+}
+
+.hr {
+    margin: 0 3rem;
+    border: 1px solid #0000003b;
+}
+
+.lower_footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 3rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+
+    .footer,
+    .right_block {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .links {
+        display: flex;
+        width: 100%;
+        gap: 5rem;
+        justify-content: center;
+    }
+}

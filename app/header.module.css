@@ -1,6 +1,6 @@
 .header {
     display: flex;
-    padding: 1rem;
+    justify-content: space-between;
 }
 
 .logo {
@@ -47,6 +47,7 @@
 .link {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .link li {
@@ -59,4 +60,41 @@
     padding: 0.5rem 1rem;
     border-radius: 20px;
     border: 0;
+}
+
+/** New Elements */
+.bars {
+    height: 40px;
+    width: 50px;
+    fill: var(--primaryColor);
+    cursor: pointer;
+}
+
+.justify_center {
+    justify-self: center;
+}
+
+.mobile_view {
+    position: absolute;
+    height: 95vh;
+    width: 100%;
+    background: white;
+    padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .link {
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    .contact_bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .justify_center {
+        margin: 2rem 0;
+    }
 }

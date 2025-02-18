@@ -1,0 +1,9 @@
+.d_flex {
+    display: flex;
+    margin: 0 5px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
