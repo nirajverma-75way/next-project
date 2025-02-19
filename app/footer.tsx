@@ -1,5 +1,6 @@
 import Image from "next/image";
 import style from './footer.module.css'
+import Div from "./Animation/Div";
 export default function Footer() {
     const link = (<ul className={style.link}>
         <li>Link1</li>
@@ -12,16 +13,19 @@ export default function Footer() {
     return (
         <>
             <div className={style.footer}>
-                <div className={style.img}>
-                    <Image
-                        src="/next.svg"
-                        alt="logo"
-                        width={180}
-                        height={38}
-                        priority
-                    />
+                <Div direction="left">
+                    <div className={style.img}>
+                        <Image
+                            src="/next.svg"
+                            alt="logo"
+                            width={180}
+                            height={38}
+                            priority
+                        />
 
-                </div>
+                    </div>
+                </Div>
+
                 <div className={style.right_block}>
                     <div className={style.links}><div className={style.gap_flex_block}>
                         {link}

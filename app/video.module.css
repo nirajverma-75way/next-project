@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.videoRow {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    flex: 1;
+}
+
+.video {
+    width: 80px;
+    cursor: pointer;
+    transition: width 0.3s ease-in-out;
+}
+
+.activeVideo {
+    width: 300px;
+    cursor: pointer;
+    transition: width 0.3s ease-in-out;
+}
+
+.details {
+    flex: 1;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+}
