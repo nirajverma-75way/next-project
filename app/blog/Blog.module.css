@@ -1,0 +1,23 @@
+.category {
+    margin: 2px 0.5rem;
+    padding: 5px 1rem;
+    border: 1px solid green;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category_active {
+    margin: 2px 0.5rem;
+    padding: 5px 1rem;
+    background-color: green;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.flex_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
