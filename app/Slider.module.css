@@ -1,43 +1,42 @@
 .sliderContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 700px;
-    margin: auto;
+    justify-content: space-around;
+    margin: 5rem 0;
+    width: 100%;
 }
 
 .cards {
     display: flex;
-    gap: 15px;
-    overflow: hidden;
+    gap: 55px;
+    overflow: visible;
 }
 
 .card {
-    background: #ffffff;
-    padding: 20px;
+    border: 1px solid green;
+    background: #fff;
+    padding: 3rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 180px;
-    height: 220px;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px #0003;
+    width: 380px;
+    transition: transform 0.4s ease-in-out;
+    min-height: 18rem;
+    align-content: center;
 }
 
 .activeCard {
-    width: 200px;
-    height: 250px;
-    transform: scale(1.05);
+    transform: scale(1.2);
+    border: 1px solid red;
 }
 
 .title {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 2rem;
 }
 
 .description {
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 3rem;
     color: #555;
 }
 
@@ -56,25 +55,17 @@
 }
 
 .button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px 15px;
-    font-size: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    background: #00000078;
+    padding-top: 5px;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #22222282;
+    align-content: center;
     border-radius: 50%;
+    box-shadow: 6px 8px 10px #000000c2;
+    font-size: 20px;
     cursor: pointer;
-    transition: background 0.3s;
-}
-
-.leftButton {
-    left: -40px;
-}
-
-.rightButton {
-    right: -40px;
+    color: #fff;
 }
 
 .button:disabled {

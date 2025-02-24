@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Slider.module.css";
-import { motion } from "framer-motion";
+import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 
 interface SliderProps {
     data: { title: string; description: string; btn: string }[];
@@ -8,50 +9,74 @@ interface SliderProps {
 }
 
 export default function Slider({ data, row }: SliderProps) {
-    const [card, setCard] = useState(0);
-    const showData = useMemo(() => data.slice(card, card + row), [data, card, row]);
+    const [startIndex, setStartIndex] = useState(0);
+    const [direction, setDirection] = useState<"left" | "right">("right");
+
+    // Get the current visible cards
+    const visibleCards = useMemo(() => data.slice(startIndex, startIndex + row), [data, startIndex, row]);
+
+    // Slide animation variants
+    const slideVariants = {
+        enterLeft: { x: "-100%", opacity: 0 }, // Incoming from left
+        enterRight: { x: "100%", opacity: 0 }, // Incoming from right
+        center: { x: "0%", opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } }, // Fully visible
+        exitLeft: { x: "-100%", opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }, // Exiting left
+        exitRight: { x: "100%", opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } } // Exiting right
+    };
+    const slideVariantsActive = {
+        enterLeft: { x: "-100%", opacity: 0 }, // Incoming from left
+        enterRight: { x: "100%", opacity: 0 }, // Incoming from right
+        center: { x: "0%", opacity: 1, scale: 1.2, transition: { duration: 0.5, ease: "easeInOut" } }, // Fully visible
+        exitLeft: { x: "-100%", opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } }, // Exiting left
+        exitRight: { x: "100%", opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } } // Exiting right
+    };
+
+    // Next Slide
+    const handleNext = () => {
+        if (startIndex + row < data.length) {
+            setDirection("right");
+            setStartIndex((prev) => prev + 1);
+        }
+    };
+
+    // Previous Slide
+    const handlePrev = () => {
+        if (startIndex > 0) {
+            setDirection("left");
+            setStartIndex((prev) => prev - 1);
+        }
+    };
 
     return (
         <div className={styles.sliderContainer}>
-            {/* Navigation Buttons */}
-            <button
-                className={`${styles.button} ${styles.leftButton}`}
-                onClick={() => card > 0 && setCard(card - 1)}
-                disabled={card === 0}
-            >
-                ◀
+            {/* Left Button */}
+            <button className={styles.leftButton} onClick={handlePrev} disabled={startIndex === 0}>
+                <FaArrowLeftLong />
             </button>
 
+            {/* Card Container with AnimatePresence */}
             <div className={styles.cards}>
-                {showData.map((d, index) => (
-                    <motion.div
-                        key={index}
-                        className={`${styles.card} ${index === Math.floor(row / 2) ? styles.activeCard : ""}`}
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
-                        transition={{ duration: 0.5 }}
-                        whileHover={{ scale: 1.1 }}
-                    >
-                        <h2 className={styles.title}>{d.title}{Math.floor(row / 2)}</h2>
-                        <p className={styles.description}>{d.description}</p>
-                        <motion.button
-                            className={styles.cardButton}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
+                <AnimatePresence mode="sync" initial={false}>
+                    {visibleCards.map((d, index) => (
+                        <motion.div
+                            key={d.title + startIndex} // Unique key to re-trigger animation
+                            className={`${styles.card} ${index === Math.floor(row / 2) ? styles.activeCard : ""}`}
+                            variants={startIndex < 0 ? (index === 0 ? slideVariantsActive : slideVariants) : (index === Math.floor(row / 2) ? slideVariantsActive : slideVariants)}
+                            initial={direction === "right" ? "enterRight" : "enterLeft"}
+                            animate="center"
+                            exit={direction === "right" ? "exitLeft" : "exitRight"}
                         >
-                            {d.btn}
-                        </motion.button>
-                    </motion.div>
-                ))}
+                            <h2>{d.title}</h2>
+                            <p>{d.description}</p>
+                            <button>{d.btn}</button>
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
             </div>
 
-            <button
-                className={`${styles.button} ${styles.rightButton}`}
-                onClick={() => card + row < data.length && setCard(card + 1)}
-                disabled={card + row >= data.length}
-            >
-                ▶
+            {/* Right Button */}
+            <button className={styles.rightButton} onClick={handleNext} disabled={startIndex + row >= data.length}>
+                <FaArrowRightLong />
             </button>
         </div>
     );

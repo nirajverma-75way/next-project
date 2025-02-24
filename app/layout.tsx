@@ -5,6 +5,7 @@ import "./globals.css";
 import { useEffect } from "react";
 import Header from "./header";
 import Footer from "./footer";
+import Dialog from "./dialog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Dialog />
         {children}
       </body>
     </html>

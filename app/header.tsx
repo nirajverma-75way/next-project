@@ -7,9 +7,11 @@ import { MdCall } from "react-icons/md";
 import useBreakpoint from './hooks/useBreakPoints';
 import { ImMenu } from "react-icons/im";
 import { MdOutlineClose } from "react-icons/md";
+import { useDialog } from '@/app/hooks/useDialog';
 
 export default function Header() {
     const isMobile = useBreakpoint("md");
+    const { showDialog } = useDialog("signup");
     console.log(isMobile)
     const [openMenu, setOpenMenu] = useState(false);
     const contact = (<div className={style.contact_bar}>
@@ -48,7 +50,7 @@ export default function Header() {
                 {link}
             </div>
             <div>
-                <button className={style.btn}>Click It</button>
+                <button onClick={showDialog} className={style.btn}>Click It</button>
             </div>
         </div>
     </div>)

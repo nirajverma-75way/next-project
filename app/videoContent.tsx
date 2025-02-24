@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "./video.module.css";
-import { motion } from "framer-motion";
 
 const videos = [
     {
@@ -26,30 +25,39 @@ const videos = [
 const VideoGallery = () => {
     const [activeVideo, setActiveVideo] = useState(videos[0]);
 
+    const handleMouseEnter = (video, event) => {
+        console.log(video, event)
+        const videoElement = event.target;
+
+        if (activeVideo.id !== video.id) {
+            const prevActiveVideo = document.querySelector(`.${styles.activeVideo}`);
+            if (prevActiveVideo) (prevActiveVideo as HTMLVideoElement).pause(); // Pause previous video
+        }
+
+        videoElement.play(); // Play hovered video
+        setActiveVideo(video); // Set active video ID
+    };
+
     return (
         <div className={styles.container}>
             {/* Video Row */}
             <div className={styles.videoRow}>
                 {videos.map((video) => (
-                    <motion.video
+                    <video
                         key={video.id}
                         src={video.src}
                         controls
-                        className={
-                            video.id === activeVideo.id ? styles.activeVideo : styles.video
-                        }
-                        onClick={() => setActiveVideo(video)}
-                        initial={{ opacity: 0.7 }}
-                        animate={{ opacity: video.id === activeVideo.id ? 1 : 0.7 }}
-                        whileHover={{ scale: 1.05 }}
+                        className={video.id === activeVideo.id ? styles.activeVideo : styles.video}
+                        onMouseEnter={(e) => handleMouseEnter(video, e)}
+                        muted // Ensure autoplay works
                     />
                 ))}
             </div>
 
             {/* Video Details */}
             <div className={styles.details}>
-                <h2>{activeVideo.title}</h2>
-                <p>{activeVideo.description}</p>
+                <h2>{activeVideo?.title}</h2>
+                <p>{activeVideo?.description}</p>
             </div>
         </div>
     );
