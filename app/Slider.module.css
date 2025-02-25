@@ -53,14 +53,12 @@
 .leftButton {
     position: absolute;
     z-index: 99;
-    top: 50%;
     left: 4rem;
 }
 
 .rightButton {
     position: absolute;
     z-index: 99;
-    top: 50%;
     right: 4rem;
 }
 

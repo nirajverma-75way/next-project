@@ -57,6 +57,7 @@ const Slider = ({ data, row }) => {
                                     scale: 0.7,
                                     opacity: 0,
                                 }}
+                                whileHover={{ scale: relativeIndex === Math.floor(row / 2) ? 1.3 : 1.1 }} // **Hover effect**
                                 transition={{
                                     x: { type: "tween", duration: 0.15, ease: "easeInOut" },
                                     scale: { duration: 0.2, ease: "easeInOut" },
