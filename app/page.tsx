@@ -9,6 +9,7 @@ import { useState } from "react";
 import Button from "./Animation/Button";
 import ImageReveal from "./curtain/page";
 import BlogCard from "./blog/blogCard";
+import SliderX from "./SliderX";
 
 export default function Home() {
   const [activeTestomonial, setActiveTestomonial] = useState(0);
@@ -65,12 +66,12 @@ export default function Home() {
   return (
     <div style={{ justifyItems: "center" }}>
       {/* quotes section */}
-      <div className={styles.quotes_box}>
+      {/* <div className={styles.quotes_box}>
         <p>Unfortunately, earning money is in many ways harder than ever. Inflation means bigger bills even when our paychecks aren't any bigger. One trick: before you buy something, consider the cost not as money, but as time. How long do you have to work to earn enough money to make that one impulse purchase? Is it worth the labor you put into earning it?</p>
       </div>
-      <ImageReveal />
+      <ImageReveal /> */}
       {/* Opportunity */}
-      <div className={styles.opportunity_box}>
+      {/* <div className={styles.opportunity_box}>
         <h1 className={styles.opportunity_title}>Earning Opportunity with NirajKVerma </h1>
         <hr />
         <div>
@@ -83,10 +84,11 @@ export default function Home() {
           ))}
         </div>
 
-      </div>
+      </div> */}
       <Slider data={sliderData} row={3} />
+      <SliderX />
       {/** Our Partner */}
-      <div className={styles.partner_box}>
+      {/* <div className={styles.partner_box}>
         <h1>My title</h1>
         <div className={styles.partner_list}>
           <Image
@@ -152,9 +154,9 @@ export default function Home() {
             priority
           />
         </div>
-      </div>
+      </div> */}
       {/* Sector */}
-      <div className={styles.sector_div}>
+      {/* <div className={styles.sector_div}>
         <div className={styles.sector_box}>
           {sector?.map((data, index) => <div key={index} className={styles.sector_card}>
             <Image
@@ -176,9 +178,9 @@ export default function Home() {
           priority
         />
       </div>
-      <VideoGallery />
+      <VideoGallery /> */}
       {/* BLOG CARD */}
-      <div className={styles.blog_box}>
+      {/* <div className={styles.blog_box}>
         <div className={styles.blog_head}>
           <div>
             <p>category</p>
@@ -196,9 +198,9 @@ export default function Home() {
         <div className={styles.blog_tail}>
           {subArticles?.slice(1, 4)?.map((data, index) => <BlogCard key={index} data={data} />)}
         </div>
-      </div>
+      </div> */}
       {/* Testimonials */}
-      <div>
+      {/* <div>
         <div className={styles.testimonial_list}>
           {
             subArticles?.slice(activeTestomonial, activeTestomonial + 2)?.map((data, i) =>
@@ -222,7 +224,7 @@ export default function Home() {
             [...Array(subArticles?.length - 1)]?.map((_, index) => <div key={index} onClick={() => setActiveTestomonial(index)} className={styles.dot}></div>)
           }
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
