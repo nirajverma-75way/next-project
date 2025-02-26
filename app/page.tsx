@@ -86,7 +86,7 @@ export default function Home() {
 
       </div> */}
       <Slider data={sliderData} row={3} />
-      <SliderX />
+      <SliderX data={sliderData} row={3} />
       {/** Our Partner */}
       {/* <div className={styles.partner_box}>
         <h1>My title</h1>

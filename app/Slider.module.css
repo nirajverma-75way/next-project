@@ -1,7 +1,7 @@
 .sliderContainer {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     margin: 5rem 0;
     width: 100%;
 }
@@ -22,11 +22,18 @@
     transition: transform 0.4s ease-in-out;
     min-height: 18rem;
     align-content: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.1);
 }
 
 .activeCard {
     transform: scale(1.2);
     border: 1px solid red;
+
+    z-index: 10;
 }
 
 .title {
@@ -78,9 +85,4 @@
     font-size: 20px;
     cursor: pointer;
     color: #fff;
-}
-
-.button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
 }
